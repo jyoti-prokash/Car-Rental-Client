@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/Rent Car Logo (1)/Car Rent Logo-3.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -13,15 +13,15 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <a>Available Cars</a>
+        <NavLink to="/availableCars">Available Cars</NavLink>
       </li>
       {user?.email && (
         <>
           <li>
-            <a>Add Car</a>
+            <NavLink to="/addCar">Add Car</NavLink>
           </li>
           <li>
             <a>My Cars</a>
@@ -74,12 +74,17 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {!user ? (
-          <Link to="/login">
-            <button className="btn">Login</button>
-          </Link>
+          <NavLink to="/login">
+            <button className="btn text-white font-semibold text-lg bg-[#FF3600]">
+              Login
+            </button>
+          </NavLink>
         ) : (
           <Link>
-            <button onClick={HandleLogOut} className="btn">
+            <button
+              onClick={HandleLogOut}
+              className="btn text-white font-semibold text-lg bg-[#FF3600]"
+            >
               Logout
             </button>
           </Link>
