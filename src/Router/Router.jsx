@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddCar from "../Pages/AddCar/AddCar";
 import AvailableCars from "../Pages/AvailableCars/AvailableCars";
+import CarDetails from "../Pages/CarDetails/CarDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/availableCars",
-        element: <AvailableCars></AvailableCars>
+        element: <AvailableCars></AvailableCars>,
       },
       {
         path: "/addCar",
         element: <AddCar></AddCar>,
+      },
+      {
+        path: "/carDetails/:id",
+        element: <CarDetails></CarDetails>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
       },
     ],
   },

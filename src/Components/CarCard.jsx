@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CarCard = ({car}) => {
-    const { carModel,description, dailyRentalPrice, photo, availability } = car;
+    const { _id,carModel,description, dailyRentalPrice, photo, availability } = car;
     return (
       <div>
         <div className="card bg-base-100 shadow-xl border p-5">
@@ -14,12 +15,15 @@ const CarCard = ({car}) => {
             <p className="badge badge-secondary">{availability}</p>
             <div className="divider"></div>
             <div className="card-actions justify-between items-center">
-              <span className="font-bold text-xl">
-                $ {dailyRentalPrice}/Per Day
-              </span>
-              <button className="text-white font-bold bg-[#FF3600] px-2 py-3 rounded-xl btn">
-                Book Now
-              </button>
+              <p>
+                <span className="text-2xl font-bold">${dailyRentalPrice}</span>
+                /Per Day
+              </p>
+              <Link to={`/carDetails/${_id}`}>
+                <button className="text-white font-bold bg-[#FF3600] px-2 py-3 rounded-xl btn">
+                  Book Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
