@@ -1,26 +1,38 @@
-import React from "react";
-import logo from "../assets/Rent Car Logo (1)/Car Rent Logo-3.png"
+import { useContext } from "react";
+import { AuthContext } from "../Context/AuthProvider";
+import logo from "../assets/Rent Car Logo (1)/Car Rent Logo-3.png";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const links = (
-      <>
-        <li>
-          <a>Home</a>
-        </li>
-        <li>
-          <a>Available Cars</a>
-        </li>
-        <li>
-          <a>Add Car</a>
-        </li>
-        <li>
-          <a>My Cars</a>
-        </li>
-        <li>
-          <a>My Bookings</a>
-        </li>
-      </>
-    );
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const HandleLogOut = () => {
+    logOut();
+    navigate("/");
+  };
+  const links = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <a>Available Cars</a>
+      </li>
+      {user?.email && (
+        <>
+          <li>
+            <a>Add Car</a>
+          </li>
+          <li>
+            <a>My Cars</a>
+          </li>
+          <li>
+            <a>My Bookings</a>
+          </li>
+        </>
+      )}
+    </>
+  );
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -48,16 +60,30 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <img className="w-28 mr-5 rounded-full scale-120" src={logo} alt="logo" />
-        <a className="text-2xl font-bold">CAR<span className="text-yellow-500">|</span>RENTAL</a>
+        <img
+          className="w-28 mr-5 rounded-full scale-120"
+          src={logo}
+          alt="logo"
+        />
+        <p className="text-2xl font-bold">
+          CAR<span className="text-yellow-500">|</span>RENTAL
+        </p>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        {!user ? (
+          <Link to="/login">
+            <button className="btn">Login</button>
+          </Link>
+        ) : (
+          <Link>
+            <button onClick={HandleLogOut} className="btn">
+              Logout
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

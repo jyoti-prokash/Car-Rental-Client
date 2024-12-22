@@ -1,0 +1,7 @@
+.overlay{
+    background-color: (0,0,0,.1);
+    width: 550px;
+    background-color: rgba(0,0,0,.1);
+    height: 100%;
+    width: 100%;
+}
