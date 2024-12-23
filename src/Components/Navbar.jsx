@@ -24,7 +24,7 @@ const Navbar = () => {
             <NavLink to="/addCar">Add Car</NavLink>
           </li>
           <li>
-            <a>My Cars</a>
+            <NavLink to="/myCar">My Cars</NavLink>
           </li>
           <li>
             <a>My Bookings</a>
