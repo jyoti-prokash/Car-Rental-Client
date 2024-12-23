@@ -3,10 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { TbPhotoEdit } from "react-icons/tb";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import Swal from "sweetalert2";
 
 const MyCar = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     const [myCar, setMyCar] = useState([]);
     useEffect(()=>{
         axios.get(`${import.meta.env.VITE_API_URL}/cars?email=${user?.email}`)
@@ -17,6 +17,36 @@ const MyCar = () => {
             console.log(err);
         })
     },[user]);
+    // handle delete
+    const handleDelete = (id) =>{
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete it?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              fetch(`${import.meta.env.VITE_API_URL}/cars/${id}`, {
+                method: "DELETE",
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  if (data.deletedCount > 0) {
+                    Swal.fire({
+                      title: "Deleted!",
+                      text: "Delete Successfully",
+                      icon: "success",
+                    });
+                    const remainingDelete = myCar.filter((c) => c._id !== id);
+                    setMyCar(remainingDelete);
+                  }
+                });
+            }
+          });
+    }
     return (
       <div className="container mx-auto">
         <h2 className="text-2xl font-bold text-center">My Cars</h2>
@@ -59,7 +89,7 @@ const MyCar = () => {
                     </button>
                   </td>
                   <td>
-                    <button>
+                    <button onClick={() => handleDelete(car._id)}>
                       <RiDeleteBin6Line />
                     </button>
                   </td>

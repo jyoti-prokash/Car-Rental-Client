@@ -7,7 +7,7 @@ const CarCard = ({car}) => {
       <div>
         <div className="card bg-base-100 shadow-xl border p-5">
           <figure>
-            <img className="p-3 rounded-3xl" src={photo} alt="Shoes" />
+            <img className="p-3 h-[280px] rounded-3xl" src={photo} alt="Shoes" />
           </figure>
           <div className="card-body">
             <h2 className="card-title text-2xl font-bold">{carModel}</h2>

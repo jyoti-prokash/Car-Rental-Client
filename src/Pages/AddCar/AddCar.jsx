@@ -5,14 +5,15 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const AddCar = () => {
   const {user} = useContext(AuthContext)
-  console.log(user?.email);
+    const newDate = new Date();
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const initialData = Object.fromEntries(formData.entries());
         const {...newCar} = initialData;
         newCar.features = newCar.features.split('\n');
-        
+        newCar.Date = newDate;
+        newCar.bookingCount = 0;
         // send to server vie creating post api
         axios.post(`${import.meta.env.VITE_API_URL}/cars`,newCar)
         .then(res =>{
@@ -155,7 +156,7 @@ const AddCar = () => {
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <input hidden defaultValue={user?.email} type="email" name="adder_email" />
-            <input hidden defaultValue={0} type="email" name="bookingCount" />
+            {/* <input hidden defaultValue={0} type="email" name="bookingCount" /> */}
           </div>
           <button className="btn text-white font-bold text-xl bg-[#FF3600] w-full">Add Car</button>
         </form>
