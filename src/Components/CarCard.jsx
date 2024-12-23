@@ -7,12 +7,26 @@ const CarCard = ({car}) => {
       <div>
         <div className="card bg-base-100 shadow-xl border p-5">
           <figure>
-            <img className="p-3 h-[280px] rounded-3xl" src={photo} alt="Shoes" />
+            <img
+              className="p-3 h-[280px] rounded-3xl"
+              src={photo}
+              alt="Shoes"
+            />
           </figure>
           <div className="card-body">
             <h2 className="card-title text-2xl font-bold">{carModel}</h2>
             <p>{description}</p>
-            <p className="badge badge-secondary">{availability}</p>
+            {/* {car.availability === "available"? } */}
+            <p
+              className={`${
+                availability === "available"
+                  ? "badge badge-primary"
+                  : "badge badge-secondary"
+              }`}
+            >
+              {availability}
+            </p>
+            {/* <p className="badge badge-secondary">{availability}</p> */}
             <div className="divider"></div>
             <div className="card-actions justify-between items-center">
               <p>

@@ -48,9 +48,9 @@ const MyCar = () => {
           });
     }
     return (
-      <div className="container mx-auto">
+      <div>
         <h2 className="text-2xl font-bold text-center">My Cars</h2>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto container mx-auto">
           <table className="table">
             {/* head */}
             <thead>

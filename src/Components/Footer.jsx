@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/Rent Car Logo (1)/Car Rent Logo-3.png";
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-emerald-200 p-10">
+    <footer className="footer footer-center bg-emerald-200 opacity-100 p-10">
       <aside>
         <img
           className="w-28 rounded-full scale-150 mb-5"
