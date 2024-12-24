@@ -24,9 +24,8 @@ const RecentListing = () => {
             key={car._id}
             className="relative bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-xl hover:scale-105 transition-transform overflow-hidden"
           >
-            {/* Gradient border effect */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-green-500 opacity-20"></div>
-            {/* Card content */}
+            {/* Card*/}
             <img
               src={car.photo}
               alt={car.carModel}
@@ -48,9 +47,6 @@ const RecentListing = () => {
               </p>
               <p className="text-gray-400 text-xs mt-1">{car.Date}</p>
             </div>
-
-            {/* Decorative gradient circle */}
-            <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-green-500"></div>
           </div>
         ))}
       </div>
