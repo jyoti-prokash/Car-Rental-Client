@@ -2,7 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CarCard = ({car}) => {
-    const { _id,carModel,description, dailyRentalPrice, photo, availability } = car;
+    const {
+      _id,
+      carModel,
+      description,
+      dailyRentalPrice,
+      photo,
+      availability,
+      bookingCount,
+    } = car;
     return (
       <div>
         <div className="card bg-base-100 shadow-xl border p-5">
@@ -26,6 +34,7 @@ const CarCard = ({car}) => {
             >
               {availability}
             </p>
+            <p className='font-semibold'>Booking Count: {bookingCount}</p>
             {/* <p className="badge badge-secondary">{availability}</p> */}
             <div className="divider"></div>
             <div className="card-actions justify-between items-center">
