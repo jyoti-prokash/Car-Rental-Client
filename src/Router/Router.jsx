@@ -8,6 +8,11 @@ import AddCar from "../Pages/AddCar/AddCar";
 import AvailableCars from "../Pages/AvailableCars/AvailableCars";
 import CarDetails from "../Pages/CarDetails/CarDetails";
 import MyCar from "../Pages/MyCar/Mycar";
+import MyBooking from "../Pages/MyBookings/MyBooking";
+import PrivetRoute from "./PrivetRoute";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -38,12 +43,21 @@ const router = createBrowserRouter([
       {
         path: "/carDetails/:id",
         element: <CarDetails></CarDetails>,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
       },
       {
         path: "/myCar",
-        element: <MyCar></MyCar>
-      }
+        element: (
+          <PrivetRoute>
+            <MyCar></MyCar>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/myBooking",
+        element: <MyBooking></MyBooking>,
+      },
     ],
   },
 ]);

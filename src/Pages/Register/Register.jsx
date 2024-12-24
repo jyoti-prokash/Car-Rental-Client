@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { createUser, googleLogin, updateUserProfile } =
     useContext(AuthContext);
   const handleRegister = (e) => {
@@ -29,8 +31,8 @@ const Register = () => {
     googleLogin()
     .then((result) => {
       console.log(result);
-    //   toast.success("Welcome");
-    //   navigate("/");
+      toast.success("Welcome");
+      navigate("/");
     })
     .catch(err=>{
         console.log(err.message);
