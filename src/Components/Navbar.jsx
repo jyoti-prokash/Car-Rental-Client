@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/Rent Car Logo (1)/Car Rent Logo-3.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-gradient-to-r from-blue-200 to-green-300">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -73,6 +74,20 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
+        {user && (
+          <div className="avatar online mr-5">
+            <Tooltip
+              className="z-10"
+              anchorSelect="#showTooltip"
+              content={user.displayName}
+            ></Tooltip>
+            <div className="w-16 rounded-full">
+              <Link>
+                <img id="showTooltip" src={user.photoURL} />
+              </Link>
+            </div>
+          </div>
+        )}
         {!user ? (
           <NavLink to="/login">
             <button className="btn text-white font-semibold text-lg bg-[#FF3600]">

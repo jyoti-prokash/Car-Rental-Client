@@ -32,15 +32,33 @@ const AddCar = () => {
   
     return (
       <div>
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md">
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md grid grid-cols-1 lg:grid-cols-2 gap-5"
+        >
           <div className="mb-4">
             <label
+              htmlFor="location"
               className="block text-sm font-medium text-gray-700"
             >
+              Email
+            </label>
+            <input
+              type="email"
+              defaultValue={user?.email}
+              id="location"
+              name="email"
+              disabled
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">
               Car Model
             </label>
             <input
-              type="text" required
+              type="text"
+              required
               id="carModel"
               name="carModel"
               placeholder="Enter car model"
@@ -55,7 +73,8 @@ const AddCar = () => {
               Daily Rental Price
             </label>
             <input
-              type="number" required
+              type="number"
+              required
               id="dailyRentalPrice"
               name="dailyRentalPrice"
               placeholder="Enter daily rental price"
@@ -72,7 +91,8 @@ const AddCar = () => {
             </label>
             <select
               id="availability"
-              name="availability" required
+              name="availability"
+              required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="available">Available</option>
@@ -88,7 +108,8 @@ const AddCar = () => {
               Vehicle Registration Number
             </label>
             <input
-              type="text" required
+              type="text"
+              required
               id="registrationNumber"
               name="registrationNumber"
               placeholder="Enter vehicle registration number"
@@ -104,7 +125,8 @@ const AddCar = () => {
               Features
             </label>
             <textarea
-              type="text" required
+              type="text"
+              required
               id="features"
               name="features"
               placeholder="Enter features (e.g., GPS, AC) in a new line"
@@ -120,7 +142,8 @@ const AddCar = () => {
               Description
             </label>
             <textarea
-              id="description" required
+              id="description"
+              required
               name="description"
               placeholder="Enter description"
               rows="3"
@@ -137,13 +160,13 @@ const AddCar = () => {
             <div id="images" className="mt-1 flex justify-center items-center">
               <input
                 type="url"
-                name="photo" required
+                name="photo"
+                required
                 placeholder="Photo URL"
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
           </div>
-
           <div className="mb-4">
             <label
               htmlFor="location"
@@ -153,14 +176,31 @@ const AddCar = () => {
             </label>
             <input
               type="text"
-              id="location" required
+              id="location"
+              required
               name="location"
               placeholder="Enter location"
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
             />
-            <input hidden defaultValue={user?.email} type="email" name="adder_email" />
           </div>
-          <button className="btn text-white font-bold text-xl bg-[#FF3600] w-full">Add Car</button>
+          <div className="mb-4">
+            <label
+              htmlFor="location"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Date
+            </label>
+            <input
+              type="text"
+              id="date" disabled
+              name="Date" defaultValue={new Date}
+              placeholder="Enter location"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+          <button className="btn text-white font-bold text-xl bg-[#FF3600] w-full lg:col-span-2">
+            Add Car
+          </button>
         </form>
       </div>
     );

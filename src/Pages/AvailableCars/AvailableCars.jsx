@@ -67,12 +67,12 @@ const AvailableCars = () => {
           placeholder="Search by car model, location..."
           value={searchQuery}
           onChange={handleSearch}
-          className="input input-bordered w-full md:w-1/3"
+          className="input input-bordered border-blue-500 border-2 w-full md:w-1/3"
         />
         {/* sorting all cars */}
         <div className="flex lg:justify-end container mx-auto justify-center">
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="border-blue-500 border-2 select select-bordered w-full max-w-xs font-bold"
             value={sortType}
             onChange={(e) => handleSort(e.target.value)}
           >

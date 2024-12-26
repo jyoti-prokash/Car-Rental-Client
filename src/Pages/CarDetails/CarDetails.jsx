@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../Context/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const CarDetails = () => {
   const carDetails = useLoaderData();
+  const navigate = useNavigate()
   const {
     _id,
     photo,
@@ -23,7 +25,6 @@ const CarDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // Gather form data
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
@@ -34,13 +35,13 @@ const CarDetails = () => {
     bookingCar.photo = photo;
     bookingCar.carModel = carModel;
     bookingCar.bookingId = _id;
-    bookingCar.dailyRentalPrice = dailyRentalPrice;
+    bookingCar.bookingPrice = dailyRentalPrice;
     axios.post(`${import.meta.env.VITE_API_URL}/booking`,bookingCar)
     .then(res =>{
           console.log(res.data);
           if(res.data.insertedId){
             toast.success('Added Booking Car successfully')
-            navigate("/myCar")
+            navigate("/myBooking")
           }
         })
         .catch(err=>{
@@ -71,7 +72,7 @@ const CarDetails = () => {
         </p>
 
         <button
-          className="btn"
+          className="btn btn-primary"
           onClick={() => document.getElementById("my_modal_4").showModal()}
         >
           Book Now
@@ -95,6 +96,7 @@ const CarDetails = () => {
                     <DatePicker
                       selected={startDate}
                       name="startDate"
+                      dateFormat="dd/MM/yyyy"
                       onChange={(date) => setStartDate(date)}
                     />
                   </p>
@@ -102,6 +104,7 @@ const CarDetails = () => {
                     Booking End:{" "}
                     <DatePicker
                       selected={endDate}
+                      dateFormat="dd/MM/yyyy"
                       name="endDate"
                       onChange={(date) => setEndDate(date)}
                     />
