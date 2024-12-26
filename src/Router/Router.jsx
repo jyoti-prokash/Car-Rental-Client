@@ -38,11 +38,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/addCar",
-        element: <AddCar></AddCar>,
+        element: (
+          <PrivetRoute>
+            <AddCar></AddCar>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/carDetails/:id",
-        element: <CarDetails></CarDetails>,
+        element: (
+          <PrivetRoute>
+            <CarDetails></CarDetails>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/cars/${params.id}`),
       },
@@ -56,7 +64,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myBooking",
-        element: <MyBooking></MyBooking>,
+        element: (
+          <PrivetRoute>
+            <MyBooking></MyBooking>
+          </PrivetRoute>
+        ),
       },
     ],
   },

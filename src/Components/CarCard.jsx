@@ -18,7 +18,7 @@ const CarCard = ({car}) => {
             <img
               className="p-3 h-[280px] rounded-3xl"
               src={photo}
-              alt="Shoes"
+              alt="carModel"
             />
           </figure>
           <div className="card-body">

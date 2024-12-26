@@ -11,11 +11,11 @@ const MyCar = () => {
   const { user } = useContext(AuthContext);
   const [myCar, setMyCar] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null); // State for selected car
-   const [sortType, setSortType] = useState("");
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/cars?email=${user?.email}`)
+      .get(`${import.meta.env.VITE_API_URL}/myCar?email=${user?.email}`,{withCredentials:true})
       .then((res) => {
         setMyCar(res.data);
       })

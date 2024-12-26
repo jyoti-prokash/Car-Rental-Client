@@ -1,5 +1,6 @@
 import React from 'react';
 import banner1 from "../../assets/special  offer/wp11629660-2023-toyota-wallpapers.jpg"
+import { Link } from 'react-router-dom';
 
 const SpecialOffers = () => {
     return (
@@ -28,9 +29,11 @@ const SpecialOffers = () => {
               <button className="bg-gradient-to-r from-blue-500 to-green-500 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition">
                 Learn More
               </button>
-              <button className="bg-gradient-to-r from-blue-500 to-green-500 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition">
-                Book Now
-              </button>
+              <Link to="/availableCars">
+                <button className="bg-gradient-to-r from-blue-500 to-green-500 hover:bg-red-500 text-white font-semibold px-6 py-3 rounded-lg transition">
+                  Book Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>

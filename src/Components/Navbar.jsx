@@ -61,7 +61,7 @@ const Navbar = () => {
           </ul>
         </div>
         <img
-          className="w-28 mr-5 rounded-full scale-120"
+          className="hidden lg:block w-28 mr-5 rounded-full scale-120"
           src={logo}
           alt="logo"
         />

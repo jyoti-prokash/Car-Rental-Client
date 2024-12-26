@@ -2,10 +2,12 @@ import axios from 'axios';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const AddCar = () => {
   const {user} = useContext(AuthContext)
     const newDate = new Date();
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -19,7 +21,8 @@ const AddCar = () => {
         .then(res =>{
           console.log(res.data);
           if(res.data.insertedId){
-            toast.success('Added Car successfully')
+            toast.success('Added Booking Car successfully')
+            navigate("/myCar")
           }
         })
         .catch(err=>{
@@ -28,7 +31,7 @@ const AddCar = () => {
     };
   
     return (
-      <div className="">
+      <div>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-md">
           <div className="mb-4">
             <label
@@ -156,7 +159,6 @@ const AddCar = () => {
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
             />
             <input hidden defaultValue={user?.email} type="email" name="adder_email" />
-            {/* <input hidden defaultValue={0} type="email" name="bookingCount" /> */}
           </div>
           <button className="btn text-white font-bold text-xl bg-[#FF3600] w-full">Add Car</button>
         </form>
