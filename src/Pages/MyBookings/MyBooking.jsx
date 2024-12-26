@@ -6,7 +6,7 @@ import { SlCalender } from "react-icons/sl";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Chart from "../../Components/Chart";
 
 const MyBooking = () => {
   const [bookCar, setBookCar] = useState([]);
@@ -26,24 +26,24 @@ const MyBooking = () => {
         console.error(err);
       });
   }, [user]);
-  const updateStatus = (id, newStatus) => {
-    axios
-      .put(`${import.meta.env.VITE_API_URL}/booking/status/${id}`, {
-        status: newStatus,
-      })
-      .then((res) => {
-        Swal.fire("Success", "Booking status updated successfully!", "success");
-        // Optionally update the local state if needed
-        const updatedBookings = bookCar.map((car) =>
-          car._id === id ? { ...car, bookingStatus: newStatus } : car
-        );
-        setBookCar(updatedBookings);
-      })
-      .catch((err) => {
-        console.error(err);
-        Swal.fire("Error", "Failed to update booking status", "error");
-      });
-  };
+  // const updateStatus = (id, newStatus) => {
+  //   axios
+  //     .put(`${import.meta.env.VITE_API_URL}/booking/status/${id}`, {
+  //       status: newStatus,
+  //     })
+  //     .then((res) => {
+  //       Swal.fire("Success", "Booking status updated successfully!", "success");
+  //       // Optionally update the local state if needed
+  //       const updatedBookings = bookCar.map((car) =>
+  //         car._id === id ? { ...car, bookingStatus: newStatus } : car
+  //       );
+  //       setBookCar(updatedBookings);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //       Swal.fire("Error", "Failed to update booking status", "error");
+  //     });
+  // };
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -73,24 +73,24 @@ const MyBooking = () => {
       }
     });
   };
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const initialData = Object.fromEntries(formData.entries());
-    const { ...newDate } = initialData;
+  // const handleUpdate = (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.target);
+  //   const initialData = Object.fromEntries(formData.entries());
+  //   const { ...newDate } = initialData;
 
-    // Sending PATCH request to update the car details
-    axios
-      .patch(`${import.meta.env.VITE_API_URL}/booking/${_id}`, newDate)
-      .then((res) => {
-        console.log("Update successful:", res.data);
-        toast.success("Car updated successfully!");
-      })
-      .catch((err) => {
-        console.error("Error updating car:", err);
-        toast.error("Failed to update car. Please try again.");
-      });
-  };
+  //   // Sending PATCH request to update the car details
+  //   axios
+  //     .patch(`${import.meta.env.VITE_API_URL}/booking/${_id}`, newDate)
+  //     .then((res) => {
+  //       console.log("Update successful:", res.data);
+  //       toast.success("Car updated successfully!");
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error updating car:", err);
+  //       toast.error("Failed to update car. Please try again.");
+  //     });
+  // };
 
   return (
     <div className="container mx-auto">
@@ -149,7 +149,7 @@ const MyBooking = () => {
           <div className="modal-box">
             <h3 className="font-bold text-lg">Modify Booking Date</h3>
             <div className="modal-action">
-              <form onSubmit={handleUpdate} method="dialog">
+              <form method="dialog">
                 <div className="flex gap-10 my-5">
                   <p className="p-2 border rounded-md">
                     Booking Start:{" "}
@@ -175,6 +175,7 @@ const MyBooking = () => {
           </div>
         </dialog>
       </div>
+      <Chart></Chart>
     </div>
   );
 };

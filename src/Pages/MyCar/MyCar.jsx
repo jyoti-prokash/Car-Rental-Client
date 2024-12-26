@@ -23,7 +23,7 @@ const MyCar = () => {
         console.error(err);
       });
   }, [user]);
-
+  console.log(myCar);
   // Handle delete
   const handleDelete = (id) => {
     Swal.fire({
