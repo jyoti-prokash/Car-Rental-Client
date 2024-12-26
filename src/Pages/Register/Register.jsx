@@ -5,8 +5,13 @@ import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { createUser, googleLogin, updateUserProfile } =
-    useContext(AuthContext);
+  const {
+    createUser,
+    googleLogin,
+    updateUserProfile,
+    setErrorText,
+    errorText,
+  } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +28,7 @@ const Register = () => {
         });
       })
       .catch((err) => {
-        console.log(err.message);
+        setErrorText(err.message);
       });
   };
   // gmail login
@@ -81,7 +86,8 @@ const Register = () => {
             placeholder="Password"
             className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
           />
-          <div className="flex justify-end text-xs dark:text-gray-600">
+          <div className="flex justify-between text-xs dark:text-gray-600">
+            <p className="text-red-600">{errorText}</p>
             <a rel="noopener noreferrer" href="#">
               Forgot Password?
             </a>

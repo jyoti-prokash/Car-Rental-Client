@@ -4,20 +4,21 @@ import { AuthContext } from "../../Context/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { loginUser, googleLogin} = useContext(AuthContext);
+  const { loginUser, googleLogin,setErrorText,errorText} = useContext(AuthContext);
   const navigate = useNavigate()
     const handleLogin = (e) =>{
       e.preventDefault();
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
+      setErrorText("")
       loginUser(email,password)
       .then(res=>{
-        console.log(res);
+        // console.log(res);
         navigate("/")
       })
       .catch(err=>{
-        console.log(err.message);
+        setErrorText(err.message);
       })
     };
     const googleUserLogin = () => {
@@ -51,7 +52,8 @@ const Login = () => {
             placeholder="Password"
             className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
           />
-          <div className="flex justify-end text-xs dark:text-gray-600">
+          <div className="flex justify-between text-xs dark:text-gray-600">
+            <p className="text-red-600">{errorText}</p>
             <a rel="noopener noreferrer" href="#">
               Forgot Password?
             </a>

@@ -15,6 +15,7 @@ const AddCar = () => {
         const {...newCar} = initialData;
         newCar.features = newCar.features.split('\n');
         newCar.Date = newDate;
+        newCar.email = user.email;
         newCar.bookingCount = 0;
         // send to server vie creating post api
         axios.post(`${import.meta.env.VITE_API_URL}/cars`,newCar)
@@ -45,7 +46,7 @@ const AddCar = () => {
             </label>
             <input
               type="email"
-              defaultValue={user?.email}
+              value={user?.email}
               id="location"
               name="email"
               disabled
