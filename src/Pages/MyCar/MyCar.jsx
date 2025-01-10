@@ -73,8 +73,8 @@ const handleSort = (type) => {
 };
 
   return (
-    <div>
-      <div className="flex justify-end container mx-auto mb-4">
+    <div className="min-h-screen mt-10">
+      <div className="flex justify-end container mx-auto mb-4 ">
         <select
           className="select select-bordered w-full max-w-xs"
           value={sortType}
@@ -93,7 +93,10 @@ const handleSort = (type) => {
         <>
           <div className="text-center m-10 ">
             <p className="text-lg">No cars added yet. Want to add one?</p>
-            <Link to="/addCar" className="btn bg-[#FF3600] text-white font-bold mt-4">
+            <Link
+              to="/addCar"
+              className="btn bg-[#FF3600] text-white font-bold mt-4"
+            >
               Add Car
             </Link>
           </div>

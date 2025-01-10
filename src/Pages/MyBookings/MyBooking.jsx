@@ -93,7 +93,7 @@ const MyBooking = () => {
   // };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-10 min-h-screen">
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -103,7 +103,7 @@ const MyBooking = () => {
               <th>Booking Date</th>
               <th>Total Price</th>
               <th>Booking Status</th>
-              <th>Modify Booking</th>
+              {/* <th>Modify Booking</th> */}
               <th>Cancel Booking</th>
             </tr>
           </thead>
@@ -123,7 +123,7 @@ const MyBooking = () => {
                 </td>
                 <td>$ {car.bookingPrice}</td>
                 <td>{car.bookingStatus}</td>
-                <td>
+                {/* <td>
                   <button
                     className="btn btn-outline btn-info"
                     onClick={() =>
@@ -132,7 +132,7 @@ const MyBooking = () => {
                   >
                     <SlCalender /> Modify
                   </button>
-                </td>
+                </td> */}
                 <td>
                   <button
                     className="btn btn-error"

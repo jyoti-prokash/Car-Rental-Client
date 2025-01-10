@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "image": "https://randomuser.me/api/portraits/men/1.jpg",
+    "review": "The car rental service was amazing! The process was smooth, and the vehicle was in excellent condition.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Sarah Smith",
+    "image": "https://randomuser.me/api/portraits/women/2.jpg",
+    "review": "I loved the flexible rental options and competitive pricing. Highly recommended!",
+    "rating": 4.5
+  },
+  {
+    "id": 3,
+    "name": "Michael Johnson",
+    "image": "https://randomuser.me/api/portraits/men/3.jpg",
+    "review": "Customer support was very responsive. The entire experience exceeded my expectations.",
+    "rating": 5
+  }
+]

@@ -8,9 +8,9 @@ const TypeScript = () => {
     loop: 0,
   });
   return (
-    <div className="h-14 text-center text-4xl font-bold py-10 ">
+    <div className="h-14 text-center text-2xl lg:text-4xl font-bold py-10 ">
       Explore Cars:{" "}
-      <span className="text-4xl text-red-500 font-bold">{text}</span>
+      <span className="text-2xl lg:text-4xl text-red-500 font-bold">{text}</span>
     </div>
   );
 };

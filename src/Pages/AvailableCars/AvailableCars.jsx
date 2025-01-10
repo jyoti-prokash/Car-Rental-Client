@@ -8,13 +8,14 @@ const AvailableCars = () => {
   const [layout, setLayout] = useState("grid"); 
   const [searchQuery, setSearchQuery] = useState("");
   const [sortType, setSortType] = useState("");
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/cars`)
       .then((res) => {
         setCars(res.data);
         setFilteredCars(res.data); 
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
@@ -58,9 +59,9 @@ const AvailableCars = () => {
     setFilteredCars(sortedCars);
   };
   return (
-    <div className="m-3 mx-auto">
+    <div className="m-3 mx-auto min-h-screen">
       {/* Search and Layout Toggle Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 container mx-auto gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 px-20 mx-auto gap-4">
         {/* Search Input */}
         <input
           type="text"
@@ -89,7 +90,7 @@ const AvailableCars = () => {
           <button
             className={`btn ${
               layout === "grid"
-                ? "btn-primary bg-gradient-to-r from-blue-500"
+                ? "btn-primary bg-gradient-to-r border-none from-blue-500 to-green-500"
                 : "btn-outline"
             }`}
             onClick={() => setLayout("grid")}
@@ -99,7 +100,7 @@ const AvailableCars = () => {
           <button
             className={`btn ${
               layout === "list"
-                ? "btn-primary bg-gradient-to-r from-blue-500"
+                ? "btn-primary bg-gradient-to-r border-none from-blue-500 to-green-500"
                 : "btn-outline"
             }`}
             onClick={() => setLayout("list")}
@@ -108,13 +109,17 @@ const AvailableCars = () => {
           </button>
         </div>
       </div>
-
+      <div className="text-center text-4xl text-blue-600">
+        {loading && (
+          <span className="loading loading-infinity loading-lg"></span>
+        )}
+      </div>
       {/* Cars Display */}
       {filteredCars.length > 0 ? (
         <div
           className={
             layout === "grid"
-              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
+              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-20 px-10"
               : "flex flex-col gap-4"
           }
         >
@@ -122,7 +127,7 @@ const AvailableCars = () => {
             <div
               key={car._id}
               className={
-                layout === "list" ? "border p-4 rounded-lg shadow" : ""
+                layout === "list" ? "border p-4 rounded-lg shadow lg:px-20 px-10" : ""
               }
             >
               <CarCard car={car} />

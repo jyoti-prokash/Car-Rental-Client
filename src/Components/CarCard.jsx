@@ -13,10 +13,10 @@ const CarCard = ({car}) => {
     } = car;
     return (
       <div>
-        <div className="card bg-base-100 shadow-xl border p-5">
+        <div className="h-[520px] card bg-base-100 shadow-xl border p-2">
           <figure>
             <img
-              className="p-3 h-[280px] rounded-3xl"
+              className="p-2 w-[380px] rounded-3xl object-cover"
               src={photo}
               alt="carModel"
             />
@@ -34,7 +34,7 @@ const CarCard = ({car}) => {
             >
               {availability}
             </p>
-            <p className='font-semibold'>Booking Count: {bookingCount}</p>
+            <p className="font-semibold">Booking Count: {bookingCount}</p>
             {/* <p className="badge badge-secondary">{availability}</p> */}
             <div className="divider"></div>
             <div className="card-actions justify-between items-center">
@@ -43,7 +43,7 @@ const CarCard = ({car}) => {
                 /Per Day
               </p>
               <Link to={`/carDetails/${_id}`}>
-                <button className="text-white font-bold bg-[#FF3600] px-2 py-3 rounded-xl btn">
+                <button className="text-white font-bold bg-gradient-to-r from-blue-500 to-green-500 px-2 py-3 rounded-xl btn">
                   Book Now
                 </button>
               </Link>

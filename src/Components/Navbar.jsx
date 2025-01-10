@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import logo from "../assets/Rent Car Logo (1)/Car Rent Logo-3.png";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
   const HandleLogOut = () => {
     logOut();
@@ -19,6 +20,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/availableCars">Available Cars</NavLink>
       </li>
+      <li>
+        <NavLink to="/myBooking">My Bookings</NavLink>
+      </li>
       {user?.email && (
         <>
           <li>
@@ -27,15 +31,19 @@ const Navbar = () => {
           <li>
             <NavLink to="/myCar">My Cars</NavLink>
           </li>
-          <li>
-            <NavLink to="/myBooking">My Bookings</NavLink>
-          </li>
         </>
       )}
+      <li>
+        <NavLink to="/about">About Us</NavLink>
+      </li>
     </>
   );
   return (
-    <div className="navbar bg-gradient-to-r from-blue-200 to-green-300">
+    <div
+      className={`navbar lg:px-20 bg-gradient-to-r from-green-500 to-blue-500 5y-3 ${
+        location.pathname === "/" && "fixed z-50 opacity-80 backdrop-blur-sm"
+      }`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -62,7 +70,7 @@ const Navbar = () => {
           </ul>
         </div>
         <img
-          className="hidden lg:block w-28 mr-5 rounded-full scale-120"
+          className="hidden lg:block w-20 mr-5 rounded-full scale-120"
           src={logo}
           alt="logo"
         />
@@ -90,7 +98,7 @@ const Navbar = () => {
         )}
         {!user ? (
           <NavLink to="/login">
-            <button className="btn text-white font-semibold text-lg bg-[#FF3600]">
+            <button className="btn text-white font-semibold text-lg bg-gradient-to-r from-blue-500 to-green-500">
               Login
             </button>
           </NavLink>
@@ -98,7 +106,7 @@ const Navbar = () => {
           <Link>
             <button
               onClick={HandleLogOut}
-              className="btn text-white font-semibold text-lg bg-[#FF3600]"
+              className="btn text-white font-semibold text-lg bg-gradient-to-r from-blue-500 to-green-500"
             >
               Logout
             </button>

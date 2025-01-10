@@ -10,6 +10,7 @@ import CarDetails from "../Pages/CarDetails/CarDetails";
 import MyCar from "../Pages/MyCar/Mycar";
 import MyBooking from "../Pages/MyBookings/MyBooking";
 import PrivetRoute from "./PrivetRoute";
+import About from "../Components/About";
 
 
 
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
       },
+      {
+        path: "about",
+        element: <About></About>
+      }
     ],
   },
 ]);
