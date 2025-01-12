@@ -14,7 +14,7 @@ const SpecialOffers = () => {
         }
       ></SectionTitle>
       <div
-        className="w-full h-[550px] bg-cover bg-center relative"
+        className="w-full h-[550px] bg-cover bg-center relative bg-fixed"
         style={{
           backgroundImage: `url(${banner1})`,
         }}

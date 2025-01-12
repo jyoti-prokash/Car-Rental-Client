@@ -61,7 +61,7 @@ const AvailableCars = () => {
   return (
     <div className="m-3 mx-auto min-h-screen">
       {/* Search and Layout Toggle Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 px-20 mx-auto gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 container mx-auto gap-4">
         {/* Search Input */}
         <input
           type="text"

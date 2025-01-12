@@ -26,7 +26,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 py-16 px-8">
+    <section className="bg-gray-100 py-10 px-10 lg:px-20">
       <>
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {testimonials.map((testimonial) => (
@@ -36,7 +36,6 @@ const Testimonials = () => {
                   className="rounded-full"
                   src={testimonial.image}
                   alt=""
-                  srcset=""
                 />
                 <h2>{testimonial.name}</h2>
                 <Rating style={{ maxWidth: 180 }} value={testimonial.rating} readOnly />

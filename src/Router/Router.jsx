@@ -11,6 +11,7 @@ import MyCar from "../Pages/MyCar/Mycar";
 import MyBooking from "../Pages/MyBookings/MyBooking";
 import PrivetRoute from "./PrivetRoute";
 import About from "../Components/About";
+import Services from "../Components/Services";
 
 
 
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About></About>
+      },
+      {
+        path: "services",
+        element: <Services></Services>
       }
     ],
   },
