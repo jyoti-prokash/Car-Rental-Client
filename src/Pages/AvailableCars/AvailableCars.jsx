@@ -61,17 +61,17 @@ const AvailableCars = () => {
   return (
     <div className="m-3 mx-auto min-h-screen">
       {/* Search and Layout Toggle Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6 container mx-auto gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 w-4/6 mx-auto gap-4">
         {/* Search Input */}
         <input
           type="text"
           placeholder="Search by car model, location..."
           value={searchQuery}
           onChange={handleSearch}
-          className="input input-bordered border-blue-500 border-2 w-full md:w-1/3"
+          className="input input-bordered border-blue-500 border-2"
         />
         {/* sorting all cars */}
-        <div className="flex lg:justify-end container mx-auto justify-center">
+        <div className="flex lg:justify-end container mx-auto justify-center items-center">
           <select
             className="border-blue-500 border-2 select select-bordered w-full max-w-xs font-bold"
             value={sortType}
@@ -119,7 +119,7 @@ const AvailableCars = () => {
         <div
           className={
             layout === "grid"
-              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-20 px-10"
+              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:px-20 px-2"
               : "flex flex-col gap-4"
           }
         >

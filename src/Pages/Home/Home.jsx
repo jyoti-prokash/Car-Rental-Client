@@ -1,4 +1,3 @@
-import React from 'react';
 import Banner from './Assets/Banner';
 import WhyChoose from './Assets/WhyChoose';
 import RecentListing from './RecentListing';
